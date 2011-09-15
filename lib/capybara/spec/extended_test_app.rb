@@ -43,6 +43,10 @@ class ExtendedTestApp < TestApp#< Sinatra::Base
     %{correct redirect}
   end
 
+  get '/relative/redirect' do
+    redirect '../redirect_target'
+  end
+
   private
 
     def current_request_info

@@ -53,6 +53,12 @@ describe Capybara::Mechanize::Driver do
         @driver.visit "#{REMOTE_TEST_URL}/redirect_with_http_param"
         @driver.body.should include('correct redirect')
       end
+      
+      it "should handle relative redirects" do
+        @driver.visit "#{REMOTE_TEST_URL}/relative/redirect"
+        @driver.body.should include('correct redirect')
+      end
+
     end
 
     it_should_behave_like "driver"
