@@ -9,7 +9,7 @@ class Capybara::Mechanize::Browser < Capybara::RackTest::Browser
 
   def initialize(driver)
     @agent = ::Mechanize.new
-    @agent.redirect_ok = false
+    @agent.redirect_ok = :all
     @agent.user_agent = default_user_agent
     super
   end
