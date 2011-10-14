@@ -163,6 +163,10 @@ class Capybara::Mechanize::Browser < Capybara::RackTest::Browser
   def process_remote_request(method, url, attributes, headers)
     if remote?(url)
       remote_uri = URI.parse(url)
+      if url =~ /^\./
+        url = @last_path[/^.*\//] + url
+        remote_uri = URI.parse(url)
+      end
 
       if remote_uri.host.nil?
         remote_host = @last_remote_host || Capybara.app_host || Capybara.default_host
