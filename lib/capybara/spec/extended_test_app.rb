@@ -53,7 +53,7 @@ class ExtendedTestApp < TestApp#< Sinatra::Base
       </form>}
   end
   
-  post '/relative/target' do
+  post '/relative/../relative/target' do
     %{correct}
   end
   
