@@ -47,6 +47,16 @@ class ExtendedTestApp < TestApp#< Sinatra::Base
     redirect '../redirect_target'
   end
 
+  get '/relative/form' do
+    %{<form action="../relative/target" method="post">
+       <input type="submit" value="submit" id="ok" />
+      </form>}
+  end
+  
+  post '/relative/target' do
+    %{correct}
+  end
+  
   private
 
     def current_request_info

@@ -51,6 +51,12 @@ describe Capybara::Session do
       @session.body.should include("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.853.0 Safari/535.2")
     end
 
+    it "should relative redirects in post-forms" do
+      @session.visit "#{REMOTE_TEST_URL}/relative/form"
+      @session.click_button("ok")
+      @session.body.should include('correct')
+    end
+
     it_should_behave_like "session"
     it_should_behave_like "session without javascript support"
     it_should_behave_like "session with headers support"
